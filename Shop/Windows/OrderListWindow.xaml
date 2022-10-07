@@ -1,0 +1,82 @@
+﻿<Window x:Class="Shop.Windows.OrderListWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Shop.Windows"
+        mc:Ignorable="d"
+        Title="Просмотр заказов" MinHeight="600" Height="600" MinWidth="800" Width="900">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24">Заказы</TextBlock>
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="10,0,0,0">
+            <TextBox Name="FindTextBox" Width="300" Height="20" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="1" TextChanged="FindTextBox_OnTextChanged"></TextBox>
+            <Button Name="FindButton"  VerticalAlignment="Center" Width="50" HorizontalAlignment="Left" Click="FindButton_Click">Найти</Button>
+        </StackPanel>
+
+        <ListView Name="OrdersList" Grid.Row="2" SelectionMode="Single" HorizontalContentAlignment="Stretch">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Border BorderThickness="1" BorderBrush="Black" Margin="2">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="10"></ColumnDefinition>
+                                <ColumnDefinition Width="100" MaxWidth="100"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"></RowDefinition>
+                                <RowDefinition Height="*"></RowDefinition>
+                                <RowDefinition Height="*"></RowDefinition>
+                                <RowDefinition Height="*"></RowDefinition>
+                                <RowDefinition Height="*"></RowDefinition>
+                                <RowDefinition Height="*"></RowDefinition>
+                                <RowDefinition Height="*"></RowDefinition>
+                                <RowDefinition Height="*"></RowDefinition>
+                                <RowDefinition Height="3"></RowDefinition>
+                            </Grid.RowDefinitions>
+
+                            <TextBlock Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,3,3,5" FontWeight="Bold" FontSize="16">
+                                <TextBlock.Text>
+                                    <MultiBinding StringFormat="Заказ № {0}, ID:{1}, статус: {2}">
+                                        <Binding Path="number"></Binding>
+                                        <Binding Path="id"></Binding>
+                                        <Binding Path="status_id"></Binding>
+                                    </MultiBinding>
+                                </TextBlock.Text>
+                            </TextBlock>
+
+                            <TextBlock Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top">Дата создания: </TextBlock>
+                            <TextBlock Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top">Дата доставки: </TextBlock>
+                            <TextBlock Grid.Row="3" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top">Адресс клиента: </TextBlock>
+                            <TextBlock Grid.Row="4" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top">Телефон клиента: </TextBlock>
+                            <TextBlock Grid.Row="5" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top">Номер карты ПП: </TextBlock>
+                            <TextBlock Grid.Row="6" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top">Примечание:</TextBlock>
+                            <TextBlock Grid.Row="7" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top">Список товаров:</TextBlock>
+
+                            <TextBlock Text="{Binding creation_datetime, StringFormat='yyyy-MM-dd HH:mm'}" Grid.Row="1" Grid.Column="2" VerticalAlignment="Top"></TextBlock>
+                            <TextBlock Text="{Binding delivery_datetime, StringFormat='yyyy-MM-dd HH:mm'}" Grid.Row="2" Grid.Column="2" VerticalAlignment="Top"></TextBlock>
+                            <TextBlock Text="{Binding client_address}" Grid.Row="3" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Top"></TextBlock>
+                            <TextBlock Text="{Binding client_phone}" Grid.Row="4" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Top"></TextBlock>
+                            <TextBlock Text="{Binding card_number}" Grid.Row="5" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Top"></TextBlock>
+                            <TextBlock Text="{Binding comment}" Grid.Row="6" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                            <StackPanel Grid.Row="7" Grid.Column="2" Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Top">
+                                <TextBlock Text="{Binding products}"/>
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <Button Name="CreateButton" Grid.Row="3" HorizontalAlignment="Left" VerticalAlignment="Center" Width="100" Margin="50,0,0,0" Click="CreateButton_Click">Создать</Button>
+        <Button Name="ChangeButton" Grid.Row="4" HorizontalAlignment="Left" VerticalAlignment="Center" Width="100" Margin="200,0,0,0" Click="ChangeButton_Click">Изменить</Button>
+        <Button Name="DeleteButton" Grid.Row="5" HorizontalAlignment="Right" VerticalAlignment="Center" Width="100" Margin="0,0,100,0" Click="DeleteButton_Click">Удалить</Button>
+    </Grid>
+</Window>

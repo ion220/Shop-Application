@@ -1,0 +1,59 @@
+﻿<Window x:Class="Shop.Windows.MeasureUnitListWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Shop.Windows"
+        mc:Ignorable="d"
+        Title="Просмотр едениц измерения" Height="400" Width="350" ResizeMode="NoResize">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1.2*"></RowDefinition>
+            <RowDefinition Height="6*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="2.5*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <TextBlock Grid.ColumnSpan="3" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16">Еденицы измерения</TextBlock>
+        <DataGrid Name="UnitsDataGrid" Grid.ColumnSpan="3" Grid.Row="1" AutoGenerateColumns="False" HorizontalContentAlignment="Center" IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Width="*" Binding="{Binding id}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Название" Width="5*" Binding="{Binding name}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Краткое название" Width="3*" Binding="{Binding short_name}"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Button Name="EditButton" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Center" Width="90" VerticalAlignment="Center" Click="EditButton_OnClick">Редактировать</Button>
+        <Button Name="CreateButton" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" Width="90" VerticalAlignment="Center" Click="CreateButton_OnClick">Создать</Button>
+        <Button Name="DeleteButton" Grid.Row="2" Grid.Column="2" HorizontalAlignment="Center" Width="90" VerticalAlignment="Center" Click="DeleteButton_OnClick">Удалить</Button>
+
+        <Border Grid.Row="3" Grid.ColumnSpan="3" BorderBrush="Gray" BorderThickness="1" Margin="3">
+            <Grid Name="EditToolsGrid" IsEnabled="False">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="5*"></ColumnDefinition>
+                    <ColumnDefinition Width="3*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Grid.Column="0" VerticalAlignment="Bottom" Margin="5,0,5,0" >ID:</TextBlock>
+                <TextBlock Grid.Column="1" VerticalAlignment="Bottom" Margin="5,0,5,0" >Название:</TextBlock>
+                <TextBlock Grid.Column="2" VerticalAlignment="Bottom" Margin="5,0,5,0" >Краткое название:</TextBlock>
+
+                <TextBlock Name="IdTextBlock" Grid.Row="1" VerticalAlignment="Center" Margin="5" >Auto</TextBlock>
+                <TextBox Name="NameTextBox" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" Margin="5,0,5,0" MaxLength="50"></TextBox>
+                <TextBox Name="ShortNameTextBox" Grid.Row="1" Grid.Column="2" VerticalAlignment="Center" Margin="5,0,5,0" MaxLength="10"></TextBox>
+
+                <Button Grid.Row="3" Grid.ColumnSpan="3" Name="SaveButton" HorizontalAlignment="Center" VerticalAlignment="Center" Click="SaveButton_Click">Сохранить</Button>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>

@@ -1,0 +1,37 @@
+﻿<Window x:Class="Shop.Windows.GroupsListWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Shop.Windows"
+        mc:Ignorable="d"
+        Title="Группы товаров" Height="600" Width="500" ResizeMode="NoResize">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="5*"></RowDefinition>
+            <RowDefinition Height="0.4*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="2*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <TextBlock Grid.ColumnSpan="3" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16">Группы товаров</TextBlock>
+
+        <TreeView Name="GroupsTreeView" Grid.Row="1" Grid.ColumnSpan="3" Margin="5">
+            <TreeView.ItemTemplate>
+                <HierarchicalDataTemplate ItemsSource="{Binding Path=Groups}">
+                    <TextBlock Text="{Binding Name}" />
+                </HierarchicalDataTemplate>
+            </TreeView.ItemTemplate>
+        </TreeView>
+
+        <Button Name="ExpandButton" Grid.Row="2" Grid.ColumnSpan="2" Width="190" HorizontalAlignment="Center" VerticalAlignment="Center" Click="ExpandButton_OnClick">Развернуть главные группы</Button>
+
+        <Button Name="EditButton" Grid.Row="3" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="100" Click="EditButton_Click">Редактировать</Button>
+        <Button Name="DeleteButton" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="100" Click="DeleteButton_OnClick">Удалить</Button>
+        <Button Name="CreateButton" Grid.Row="3" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Width="100" Click="CreateButton_Click">Создать</Button>
+    </Grid>
+</Window>

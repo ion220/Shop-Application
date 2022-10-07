@@ -1,0 +1,27 @@
+﻿<Page x:Class="Shop.Pages.DirectoriesPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Shop.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="280" d:DesignWidth="450"
+      Title="DirectoriesPage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0"  FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center">Справочники</TextBlock>
+        <Button x:Name="ShowProductsBtn" Grid.Row="1" FontSize="14" Width="150" VerticalAlignment="Center" HorizontalAlignment="Center" Click="ShowProductsBtn_Click">Товары</Button>
+        <Button x:Name="ShowUnitsBtn" Grid.Row="2" FontSize="14" Width="150" VerticalAlignment="Center" HorizontalAlignment="Center" Click="ShowUnitsBtn_Click">Еданицы измерения</Button>
+        <Button x:Name="ShowGroupsBtn" Grid.Row="3" FontSize="14" Width="150" VerticalAlignment="Center" HorizontalAlignment="Center" Click="ShowGroupsBtn_Click">Группы товаров</Button>
+        <Button x:Name="ShowStatusesBtn" Grid.Row="4" FontSize="14" Width="150" VerticalAlignment="Center" HorizontalAlignment="Center" Click="ShowStatusesBtn_Click">Статусы заказов</Button>
+        <Button x:Name="ExitBtn" Grid.Row="5" FontSize="14" Width="50" VerticalAlignment="Center" HorizontalAlignment="Center" Click="ExitBtn_Click">Выход</Button>
+    </Grid>
+</Page>

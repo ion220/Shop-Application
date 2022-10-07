@@ -1,0 +1,48 @@
+﻿<Window x:Class="Shop.Windows.EditProductWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Shop.Windows"
+        mc:Ignorable="d"
+        Title="Редактирование/добавление продукта" Height="400" Width="600" ResizeMode="NoResize">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="4*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="3*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        
+        <TextBlock Name="TitleText" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16">Добавление продукта</TextBlock>
+        <TextBlock Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="5">Название:</TextBlock>
+        <TextBlock Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="5">Описание:</TextBlock>
+        <TextBlock Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="5">Еденица измерения:</TextBlock>
+        <TextBlock Grid.Row="4" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="5,10,5,5">Группа:</TextBlock>
+        <TextBlock Grid.Row="5" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="5">Цена (руб):</TextBlock>
+
+        <TextBox Name="NameTextBox" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Width="150" MaxLength="50"></TextBox>
+        <TextBox Name="DescriptionTextBox" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Width="400" MaxLength="150"></TextBox>
+
+        <ComboBox Name="UnitComboBox" Grid.Row="3" Grid.Column="1" Width="100" HorizontalAlignment="Left" VerticalAlignment="Center" DisplayMemberPath="name"></ComboBox>
+
+        <TreeView Name="GroupsTreeView" Grid.Row="4" Grid.Column="1" Margin="0,5,5,5">
+            <TreeView.ItemTemplate>
+                <HierarchicalDataTemplate ItemsSource="{Binding Path=Groups}">
+                    <TextBlock Text="{Binding Name}" />
+                </HierarchicalDataTemplate>
+            </TreeView.ItemTemplate>
+        </TreeView>
+
+        <TextBox Name="PriceTextBox" Grid.Row="5" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Width="100"></TextBox>
+
+        <Button Grid.Row="6" Grid.ColumnSpan="2" Name="SaveButton" HorizontalAlignment="Center" VerticalAlignment="Center" Click="SaveButton_Click">Сохранить</Button>
+    </Grid>
+</Window>

@@ -1,0 +1,37 @@
+﻿<Window x:Class="Shop.Windows.ProductListWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Shop.Windows"
+        mc:Ignorable="d" 
+        Title="Просмотр продуктов" Height="450" Width="800" ResizeMode="NoResize">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="5*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <TextBlock Grid.ColumnSpan="4" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16">Продукты</TextBlock>
+        <DataGrid Grid.ColumnSpan="4" Name="ProductDataGrid" Grid.Row="1" AutoGenerateColumns="False" HorizontalContentAlignment="Center" IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Width="0.5*" Binding="{Binding id}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Название" Width="2*" Binding="{Binding name}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Описание" Width="4*" Binding="{Binding description}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Ед.изм." Width="0.7*" Binding="{Binding measure_unit}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Группа" Width="3*" Binding="{Binding group}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Цена" Width="*" Binding="{Binding price}"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Name="EditButton" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="100" Click="EditButton_Click">Редактировать</Button>
+        <Button Name="DeleteButton" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="100" Click="DeleteButton_OnClick">Удалить</Button>
+        <Button Name="CreateButton" Grid.Row="2" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Width="100" Click="CreateButton_Click">Создать</Button>
+        <Button Name="GetButton" Grid.Row="2" Grid.Column="3" Visibility="Hidden" HorizontalAlignment="Center" VerticalAlignment="Center" Width="100" Click="GetButton_OnClick">Выбрать</Button>
+    </Grid>
+</Window>
