@@ -184,5 +184,9 @@
   <ItemGroup>
     <Resource Include="res\find.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="CreateDB.sql" />
+    <Resource Include="DB.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
